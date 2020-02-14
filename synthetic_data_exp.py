@@ -24,14 +24,6 @@ from treerank.utils import (
 N_TRAIN_FACTOR = 150
 EXP_FACTOR = 1.25
 
-# Main:
-if __name__ == "__main__":
-    main_experiments()
-    data_analysis("class_asymmetry.json")
-    data_analysis("model_bias.json")
-    data_analysis("model_complexity.json")
-    # main_plot()
-
 # --------------- Experiments ---------------
 
 def main_experiments():
@@ -40,7 +32,6 @@ def main_experiments():
     n_exp = 400
     batch_exp_size = 10
     mod_print = batch_exp_size
-
 
     # run_exp("model complexity", model_complexity_exp,
     #         n_exp=n_exp, mod_print=mod_print)
@@ -311,3 +302,12 @@ def main_plot():
     auc_model = auc(s_test, z_test)
     auc_diff = tree.auc - auc_model
     print("AUC diff = {:.2f} - {}".format(auc_diff, datetime.now().ctime()))
+
+
+# Main:
+if __name__ == "__main__":
+    main_experiments()
+    data_analysis("class_asymmetry.json")
+    data_analysis("model_bias.json")
+    data_analysis("model_complexity.json")
+    # main_plot()
